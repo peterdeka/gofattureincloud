@@ -40,3 +40,35 @@ type DocumentSaveResponse struct {
 	ErrorCode int    `json:"error_code"`
 	NewId     string `json:"new_id"`
 }
+
+type PeopleListReqParams struct {
+	APIKey string `json:"api_key"`
+	APIUID string `json:"api_uid"`
+	Cf     string `json:"cf"`
+	Filtro string `json:"filtro"`
+	ID     string `json:"id"`
+	Nome   string `json:"nome"`
+	Pagina int    `json:"pagina"`
+	Piva   string `json:"piva"`
+}
+
+type PeopleListResponse struct {
+	Success        bool     `json:"success"`
+	Error          string   `json:"error"`
+	ErrorCode      int      `json:"error_code"`
+	ListaClienti   []Person `json:"lista_clienti"`
+	ListaFornitori []Person `json:"lista_fornitori"`
+}
+
+type PeopleSaveResponse struct {
+	Success   bool   `json:"success"`
+	Error     string `json:"error"`
+	ErrorCode int    `json:"error_code"`
+	NewId     string `json:"new_id"`
+}
+
+type PeopleDeleteReqParams struct {
+	APIKey string `json:"api_key"`
+	APIUID string `json:"api_uid"`
+	Id     string `json:"id"`
+}

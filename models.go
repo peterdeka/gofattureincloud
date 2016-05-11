@@ -5,6 +5,7 @@ type Credentials struct {
 	APIUID string `json:"api_uid"`
 }
 
+//******DOCUMENTS******
 type Document struct {
 	AnnoCompetenza      int       `json:"anno_competenza"`
 	APIKey              string    `json:"api_key"`
@@ -83,4 +84,30 @@ type Payment struct {
 	DataScadenza string `json:"data_scadenza"`
 	Importo      int    `json:"importo"`
 	Metodo       string `json:"metodo"`
+}
+
+//******PEOPLE******
+type Person struct {
+	PA                 bool   `json:"PA"`
+	PACodice           string `json:"PA_codice"`
+	APIKey             string `json:"api_key"`
+	APIUID             string `json:"api_uid"`
+	Cf                 string `json:"cf"`
+	CodIvaDefault      int    `json:"cod_iva_default"`
+	Extra              string `json:"extra"`
+	Fax                string `json:"fax"`
+	Id                 string `json:"id,omitempty"`
+	IndirizzoCap       string `json:"indirizzo_cap"`
+	IndirizzoCitta     string `json:"indirizzo_citta"`
+	IndirizzoExtra     string `json:"indirizzo_extra"`
+	IndirizzoProvincia string `json:"indirizzo_provincia"`
+	IndirizzoVia       string `json:"indirizzo_via"`
+	Mail               string `json:"mail"`
+	Nome               string `json:"nome"`
+	Paese              string `json:"paese"`
+	PagamentoFineMese  bool   `json:"pagamento_fine_mese"`
+	Piva               string `json:"piva"`
+	Referente          string `json:"referente"`
+	Tel                string `json:"tel"`
+	TerminiPagamento   string `json:"termini_pagamento"`
 }

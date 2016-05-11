@@ -19,13 +19,13 @@ const (
 )
 
 var dTypes = [...]string{
-	"Fatture",
-	"Proforma",
-	"Ordini",
-	"Preventivi",
-	"Ndc",
-	"Ricevute",
-	"Ddt",
+	"fatture",
+	"proforma",
+	"ordini",
+	"preventivi",
+	"ndc",
+	"ricevute",
+	"ddt",
 }
 
 func (m DocumentType) String() string { return dTypes[m-1] }
