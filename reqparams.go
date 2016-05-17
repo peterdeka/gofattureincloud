@@ -64,7 +64,7 @@ type PeopleSaveResponse struct {
 	Success   bool   `json:"success"`
 	Error     string `json:"error"`
 	ErrorCode int    `json:"error_code"`
-	NewId     string `json:"new_id"`
+	NewId     string `json:"id"`
 }
 
 type PeopleDeleteReqParams struct {

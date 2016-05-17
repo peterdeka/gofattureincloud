@@ -28,12 +28,12 @@ func (ds *PeopleService) List(t PeopleType, params *PeopleListReqParams) ([]Pers
 	params.APIKey = ds.Creds.APIKey
 	params.APIUID = ds.Creds.APIUID
 	request := gorequest.New()
-	_, data, errs := request.Post(apiUrl + t.String() + "/lista").Send(params).EndBytes()
+	_, data, errs := request.Post(apiUrl + t.String() + "/lista").Send(*params).EndBytes()
 	if errs != nil {
 		return nil, nil, errs[0]
 	}
 	res := PeopleListResponse{}
-	if err := json.Unmarshal(data, res); err != nil {
+	if err := json.Unmarshal(data, &res); err != nil {
 		return nil, nil, err
 	}
 	if !res.Success {
@@ -42,42 +42,42 @@ func (ds *PeopleService) List(t PeopleType, params *PeopleListReqParams) ([]Pers
 	return res.ListaClienti, res.ListaFornitori, nil
 }
 
-func (ds *PeopleService) SavePerson(t PeopleType, p *Person) error {
+func (ds *PeopleService) SavePerson(t PeopleType, p *Person) (error, *string) {
 	p.APIKey = ds.Creds.APIKey
 	p.APIUID = ds.Creds.APIUID
 	request := gorequest.New()
 	ep := "/nuovo"
-	isNew := len(p.Id) > 0
+	isNew := len(p.Id) < 1
 	if !isNew {
 		ep = "/modifica"
 	}
-	_, data, errs := request.Post(apiUrl + t.String() + ep).Send(p).EndBytes()
+	_, data, errs := request.Post(apiUrl + t.String() + ep).Send(*p).EndBytes()
 	if errs != nil {
-		return errs[0]
+		return errs[0], nil
 	}
 	res := PeopleSaveResponse{}
-	if err := json.Unmarshal(data, res); err != nil {
-		return err
+	if err := json.Unmarshal(data, &res); err != nil {
+		return err, nil
 	}
 	if !res.Success {
-		return errors.New(res.Error)
+		return errors.New(res.Error), nil
 	}
 	if isNew {
 		p.Id = res.NewId
 	}
-	return nil
+	return nil, &res.NewId
 }
 
 func (ds *PeopleService) DeletePerson(t PeopleType, params *PeopleDeleteReqParams) error {
 	params.APIKey = ds.Creds.APIKey
 	params.APIUID = ds.Creds.APIUID
 	request := gorequest.New()
-	_, data, errs := request.Post(apiUrl + t.String() + "/elimina").Send(params).EndBytes()
+	_, data, errs := request.Post(apiUrl + t.String() + "/elimina").Send(*params).EndBytes()
 	if errs != nil {
 		return errs[0]
 	}
 	res := DocumentSaveResponse{}
-	if err := json.Unmarshal(data, res); err != nil {
+	if err := json.Unmarshal(data, &res); err != nil {
 		return err
 	}
 	if !res.Success {

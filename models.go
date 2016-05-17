@@ -60,30 +60,30 @@ type Document struct {
 }
 
 type Article struct {
-	ApplicaRaContributi bool   `json:"applica_ra_contributi"`
-	Categoria           string `json:"categoria"`
-	CodIva              int    `json:"cod_iva"`
-	Codice              string `json:"codice"`
-	Descrizione         string `json:"descrizione"`
-	ID                  string `json:"id"`
-	InDdt               bool   `json:"in_ddt"`
-	Magazzino           bool   `json:"magazzino"`
-	Nome                string `json:"nome"`
-	Ordine              int    `json:"ordine"`
-	PrezzoLordo         int    `json:"prezzo_lordo"`
-	PrezzoNetto         int    `json:"prezzo_netto"`
-	Quantita            int    `json:"quantita"`
-	Sconto              int    `json:"sconto"`
-	ScontoRosso         int    `json:"sconto_rosso"`
-	Tassabile           bool   `json:"tassabile"`
-	Um                  string `json:"um"`
+	ApplicaRaContributi bool    `json:"applica_ra_contributi"`
+	Categoria           string  `json:"categoria"`
+	CodIva              int     `json:"cod_iva"`
+	Codice              string  `json:"codice"`
+	Descrizione         string  `json:"descrizione"`
+	ID                  string  `json:"id"`
+	InDdt               bool    `json:"in_ddt"`
+	Magazzino           bool    `json:"magazzino"`
+	Nome                string  `json:"nome"`
+	Ordine              int     `json:"ordine"`
+	PrezzoLordo         float32 `json:"prezzo_lordo"`
+	PrezzoNetto         float32 `json:"prezzo_netto"`
+	Quantita            int     `json:"quantita"`
+	Sconto              int     `json:"sconto"`
+	ScontoRosso         int     `json:"sconto_rosso"`
+	Tassabile           bool    `json:"tassabile"`
+	Um                  string  `json:"um"`
 }
 
 type Payment struct {
-	DataSaldo    string `json:"data_saldo"`
-	DataScadenza string `json:"data_scadenza"`
-	Importo      int    `json:"importo"`
-	Metodo       string `json:"metodo"`
+	DataSaldo    string  `json:"data_saldo"`
+	DataScadenza string  `json:"data_scadenza"`
+	Importo      float32 `json:"importo"`
+	Metodo       string  `json:"metodo"`
 }
 
 //******PEOPLE******
